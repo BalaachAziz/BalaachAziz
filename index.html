@@ -674,87 +674,146 @@
             </div>
             
             <div class="projects-grid">
-                <a href="#" class="project-card">
-                    <!-- Text Analyzer - Add this -->
-<div class="project-card">
-    <div class="project-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
-        <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);"></div>
-        <div style="text-align: center; position: relative; z-index: 1;">
-            <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.5));">🤖</div>
-            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; max-width: 280px;">
-                <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">TF-IDF Algorithm</div>
-                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Multi-factor</div>
-                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Extractive</div>
+    
+    <!-- Budget Tool -->
+    <div class="project-card budget-theme">
+        <div class="project-visual">
+            <div class="financial-doc">
+                <div class="doc-header">Financial Dashboard</div>
+                <div class="doc-title">Budget Overview</div>
+                <div class="doc-items">
+                    <div class="doc-item">
+                        <span>Total Income</span>
+                        <span class="amount">$5,240</span>
+                    </div>
+                    <div class="doc-item">
+                        <span>Total Expenses</span>
+                        <span class="amount">$3,180</span>
+                    </div>
+                    <div class="doc-item">
+                        <span>Remaining</span>
+                        <span class="amount">$2,060</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="project-content">
-        <div class="project-category">NLP Tool</div>
-        <h3 class="project-title">AI Text Analyzer</h3>
-        <p class="project-description">
-            Advanced text analysis tool featuring custom TF-IDF extractive summarization algorithm. 
-            Provides readability metrics, vocabulary analysis, and intelligent sentence scoring using 
-            position weighting, named entity detection, and multi-factor quality assessment.
-        </p>
-        <div class="project-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">NLP</span>
-            <span class="tag">Algorithms</span>
-            <span class="tag">TF-IDF</span>
+        <div class="project-content">
+            <div class="project-category">Full-Stack Application</div>
+            <h3 class="project-title">Smart Budget Tracker</h3>
+            <p class="project-description">
+                A modern financial management application featuring real-time transaction tracking, 
+                intelligent category management, and dynamic visualizations. Built with React and Supabase, 
+                offering seamless expense monitoring and financial insights at your fingertips.
+            </p>
+            <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Recharts</span>
+                <span class="tag">Tailwind CSS</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link primary">View Demo</a>
+                <a href="#" class="project-link">GitHub</a>
+            </div>
         </div>
-        <div class="project-links">
-            <a href="https://balaachaziz.github.io/Text-Summarizer/" target="_blank" class="project-link primary">Live Demo</a>
-            <a href="https://github.com/balaachaziz/Text-Summarizer" target="_blank" class="project-link">GitHub</a>
+    </div>
+
+    <!-- Text Analyzer -->
+    <div class="project-card">
+        <div class="project-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);"></div>
+            <div style="text-align: center; position: relative; z-index: 1;">
+                <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.5));">🤖</div>
+                <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; max-width: 280px;">
+                    <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">TF-IDF Algorithm</div>
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                        <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Multi-factor</div>
+                        <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Extractive</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-content">
+            <div class="project-category">NLP Tool</div>
+            <h3 class="project-title">AI Text Analyzer</h3>
+            <p class="project-description">
+                Advanced text analysis tool featuring custom TF-IDF extractive summarization algorithm. 
+                Provides readability metrics, vocabulary analysis, and intelligent sentence scoring using 
+                position weighting, named entity detection, and multi-factor quality assessment.
+            </p>
+            <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Algorithms</span>
+                <span class="tag">TF-IDF</span>
+            </div>
+            <div class="project-links">
+                <a href="https://balaachaziz.github.io/Text-Summarizer/" target="_blank" class="project-link primary">Live Demo</a>
+                <a href="https://github.com/balaachaziz/Text-Summarizer" target="_blank" class="project-link">GitHub</a>
+            </div>
         </div>
     </div>
+
+    <!-- AI Demo WIP -->
+    <div class="project-card ai-theme">
+        <div class="project-visual">
+            <div class="ai-visualization">
+                <div class="icon">🤖</div>
+                <div class="wip-badge">Work in Progress</div>
+            </div>
+        </div>
+        <div class="project-content">
+            <div class="project-category">AI Integration</div>
+            <h3 class="project-title">AI-Powered Demo</h3>
+            <p class="project-description">
+                An intelligent application showcasing modern AI capabilities. Currently in development, 
+                this project explores the integration of machine learning models with practical user interfaces.
+            </p>
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">AI/ML</span>
+                <span class="tag">API Integration</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Demo -->
+    <div class="project-card arcade-theme">
+        <div class="project-visual">
+            <div class="arcade-cabinet">
+                <div class="arcade-screen">
+                    <span style="position: relative; z-index: 1;">🚀</span>
+                </div>
+                <div class="arcade-controls">
+                    <div class="arcade-button"></div>
+                    <div class="arcade-button"></div>
+                </div>
+            </div>
+        </div>
+        <div class="project-content">
+            <div class="project-category">Game Development</div>
+            <h3 class="project-title">Game Demo</h3>
+            <p class="project-description">
+                A fast-paced space shooter featuring polished game mechanics, multiple ship types, 
+                and dynamic enemy waves. Experience classic arcade gameplay with modern design. 
+                Download and play the full game from the repository.
+            </p>
+            <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pygame</span>
+                <span class="tag">Game Design</span>
+            </div>
+            <div class="project-links">
+                <a href="#" class="project-link primary">Download Game</a>
+                <a href="#" class="project-link">GitHub</a>
+            </div>
+        </div>
+    </div>
+
 </div>
-                    <div class="project-image">🚀</div>
-                    <div class="project-content">
-                        <h3 class="project-title">RocketRage</h3>
-                        <p class="project-description">
-                            A fast-paced space shooter game with polished mechanics, multiple ship types, and dynamic enemy waves. Published to the App Store.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Pygame</span>
-                            <span class="tag">Game Dev</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-image">💰</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Smart Budget Tracker</h3>
-                        <p class="project-description">
-                            Full-stack budget tracking application with real-time visualizations, category management, and AI-powered insights.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Supabase</span>
-                            <span class="tag">AI</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-image">🤖</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Nash Equilibrium Simulator</h3>
-                        <p class="project-description">
-                            Interactive game theory simulation using Q-learning. Watch AI agents learn optimal strategies through reinforcement learning.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Q-Learning</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                </a>
-
-
             </div>
         </div>
     </section>
