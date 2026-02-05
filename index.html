@@ -28,6 +28,11 @@
         nav {
             padding: 30px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-content {
@@ -39,7 +44,9 @@
         .logo {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-links {
@@ -52,60 +59,90 @@
             color: #888;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: #fff;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
         }
 
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            font-weight: 700;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 4rem;
             color: #fff;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #ffffff, #667eea, #764ba2);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero .subtitle {
-            font-size: 1.3rem;
-            color: #888;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: #aaa;
+            margin-top: 10px;
         }
 
         .hero .description {
-            font-size: 1.05rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 650px;
+            margin: 25px auto 45px;
         }
 
         .cta-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -119,13 +156,14 @@
         }
 
         .btn-primary {
-            background: #fff;
-            color: #0a0a0a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
         .btn-primary:hover {
-            background: #f0f0f0;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
         .btn-secondary {
@@ -154,7 +192,9 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 30px;
         }
 
@@ -173,12 +213,19 @@
         }
 
         .tech-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
             padding: 8px 18px;
             border-radius: 6px;
             font-size: 0.9rem;
-            color: #aaa;
+            color: #b8a5f0;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Stats Section */
@@ -190,11 +237,38 @@
             text-align: center;
         }
 
+        .stat-item {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+
         .stat-item h3 {
             font-size: 3rem;
-            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
             font-weight: 700;
+            position: relative;
         }
 
         .stat-item p {
@@ -202,6 +276,7 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
         }
 
         /* Projects Section */
@@ -218,7 +293,9 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
 
@@ -247,9 +324,9 @@
         }
 
         .project-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
         }
 
         /* Budget Tool - Financial Theme */
@@ -340,7 +417,7 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
             animation: pulse 3s ease-in-out infinite;
         }
 
@@ -358,13 +435,13 @@
         .ai-visualization .icon {
             font-size: 5rem;
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+            filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
         }
 
         .wip-badge {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            color: #60a5fa;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            color: #8fa3f5;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -452,7 +529,9 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
             font-weight: 600;
         }
@@ -480,12 +559,12 @@
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(102, 126, 234, 0.1);
             padding: 6px 14px;
             border-radius: 6px;
             font-size: 0.85rem;
-            color: #888;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #a89bd1;
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .project-links {
@@ -511,25 +590,110 @@
         }
 
         .project-link.primary {
-            background: #fff;
-            color: #0a0a0a;
-            border-color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-color: transparent;
         }
 
         .project-link.primary:hover {
-            background: #f0f0f0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .contact-card {
+            max-width: 650px;
+            margin: auto;
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 50px;
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-card p {
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 14px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #666;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         /* Footer */
         footer {
-            padding: 80px 0 40px;
+            padding: 60px 0 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
         }
 
         .footer-content h3 {
             font-size: 2rem;
-            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
 
@@ -544,11 +708,11 @@
             color: #666;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            color: #fff;
+            color: #8fa3f5;
         }
 
         footer p {
@@ -596,6 +760,10 @@
             .project-title {
                 font-size: 1.5rem;
             }
+
+            .contact-card {
+                padding: 30px;
+            }
         }
     </style>
 </head>
@@ -615,15 +783,16 @@
 
     <section class="hero">
         <div class="container">
-            <div class="profile-image">BA</div>
             <h1>Balaach Aziz</h1>
-            <p class="subtitle">Developer • Creator • AI Enthusiast</p>
+            <p class="subtitle">Software Developer</p>
             <p class="description">
-                Building AI-powered apps, productivity tools, and games with a desire to learn and grow my skills.
+                I design and build intelligent software — from AI-powered tools to interactive applications.
+                Focused on creating products that feel fast, modern, and meaningful.
             </p>
+
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <a href="#projects" class="btn btn-primary">See My Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
         </div>
     </section>
@@ -633,7 +802,7 @@
             <div class="about-content">
                 <h2>About Me</h2>
                 <p>
-                    I'm a self-taught developer with a unique journey through marketing, e-commerce, and app development. 
+                    I'm a self-taught developer with a skillset in marketing, e-commerce, and app development. 
                     Now I'm channeling that experience into building innovative applications at the intersection of AI, 
                     simulation, and interactive experiences.
                 </p>
@@ -675,159 +844,181 @@
             
             <div class="projects-grid">
     
-    <!-- Budget Tool -->
-    <div class="project-card budget-theme">
-        <div class="project-visual">
-            <div class="financial-doc">
-                <div class="doc-header">Financial Dashboard</div>
-                <div class="doc-title">Budget Overview</div>
-                <div class="doc-items">
-                    <div class="doc-item">
-                        <span>Total Income</span>
-                        <span class="amount">$5,240</span>
+                <!-- Budget Tool -->
+                <div class="project-card budget-theme">
+                    <div class="project-visual">
+                        <div class="financial-doc">
+                            <div class="doc-header">Financial Dashboard</div>
+                            <div class="doc-title">Budget Overview</div>
+                            <div class="doc-items">
+                                <div class="doc-item">
+                                    <span>Total Income</span>
+                                    <span class="amount">$5,240</span>
+                                </div>
+                                <div class="doc-item">
+                                    <span>Total Expenses</span>
+                                    <span class="amount">$3,180</span>
+                                </div>
+                                <div class="doc-item">
+                                    <span>Remaining</span>
+                                    <span class="amount">$2,060</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="doc-item">
-                        <span>Total Expenses</span>
-                        <span class="amount">$3,180</span>
-                    </div>
-                    <div class="doc-item">
-                        <span>Remaining</span>
-                        <span class="amount">$2,060</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="project-content">
-            <div class="project-category">Full-Stack Application</div>
-            <h3 class="project-title">Smart Budget Tracker</h3>
-            <p class="project-description">
-                A modern financial management application featuring real-time transaction tracking, 
-                intelligent category management, and dynamic visualizations. Built with React and Supabase, 
-                offering seamless expense monitoring and financial insights at your fingertips.
-            </p>
-            <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Recharts</span>
-                <span class="tag">Tailwind CSS</span>
-            </div>
-            <div class="project-links">
-                <a href="#" class="project-link primary">View Demo</a>
-                <a href="#" class="project-link">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Text Analyzer -->
-    <div class="project-card">
-        <div class="project-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
-            <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);"></div>
-            <div style="text-align: center; position: relative; z-index: 1;">
-                <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.5));">🤖</div>
-                <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; max-width: 280px;">
-                    <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">TF-IDF Algorithm</div>
-                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                        <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Multi-factor</div>
-                        <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Extractive</div>
+                    <div class="project-content">
+                        <div class="project-category">Full-Stack Application</div>
+                        <h3 class="project-title">Smart Budget Tracker</h3>
+                        <p class="project-description">
+                            A modern financial management application featuring real-time transaction tracking, 
+                            intelligent category management, and dynamic visualizations. Built with React and Supabase, 
+                            offering seamless expense monitoring and financial insights at your fingertips.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Supabase</span>
+                            <span class="tag">Recharts</span>
+                            <span class="tag">Tailwind CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="project-content">
-            <div class="project-category">NLP Tool</div>
-            <h3 class="project-title">AI Text Analyzer</h3>
-            <p class="project-description">
-                Advanced text analysis tool featuring custom TF-IDF extractive summarization algorithm. 
-                Provides readability metrics, vocabulary analysis, and intelligent sentence scoring using 
-                position weighting, named entity detection, and multi-factor quality assessment.
-            </p>
-            <div class="project-tags">
-                <span class="tag">JavaScript</span>
-                <span class="tag">NLP</span>
-                <span class="tag">Algorithms</span>
-                <span class="tag">TF-IDF</span>
-            </div>
-            <div class="project-links">
-                <a href="https://balaachaziz.github.io/Text-Summarizer/" target="_blank" class="project-link primary">Live Demo</a>
-                <a href="https://github.com/balaachaziz/Text-Summarizer" target="_blank" class="project-link">GitHub</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- AI Demo WIP -->
-    <div class="project-card ai-theme">
-        <div class="project-visual">
-            <div class="ai-visualization">
-                <div class="icon">🤖</div>
-                <div class="wip-badge">Work in Progress</div>
-            </div>
-        </div>
-        <div class="project-content">
-            <div class="project-category">AI Integration</div>
-            <h3 class="project-title">AI-Powered Demo</h3>
-            <p class="project-description">
-                An intelligent application showcasing modern AI capabilities. Currently in development, 
-                this project explores the integration of machine learning models with practical user interfaces.
-            </p>
-            <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">AI/ML</span>
-                <span class="tag">API Integration</span>
-            </div>
-            <div class="project-links">
-                <a href="#" class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Game Demo -->
-    <div class="project-card arcade-theme">
-        <div class="project-visual">
-            <div class="arcade-cabinet">
-                <div class="arcade-screen">
-                    <span style="position: relative; z-index: 1;">🚀</span>
+                <!-- Text Analyzer -->
+                <div class="project-card">
+                    <div class="project-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);"></div>
+                        <div style="text-align: center; position: relative; z-index: 1;">
+                            <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));">🤖</div>
+                            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; max-width: 280px;">
+                                <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">TF-IDF Algorithm</div>
+                                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Multi-factor</div>
+                                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Extractive</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">NLP Tool</div>
+                        <h3 class="project-title">AI Text Analyzer</h3>
+                        <p class="project-description">
+                            Advanced text analysis tool featuring custom TF-IDF extractive summarization algorithm. 
+                            Provides readability metrics, vocabulary analysis, and intelligent sentence scoring using 
+                            position weighting, named entity detection, and multi-factor quality assessment.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">TF-IDF</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://balaachaziz.github.io/Text-Summarizer/" target="_blank" class="project-link primary">Live Demo</a>
+                            <a href="https://github.com/balaachaziz/Text-Summarizer" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="arcade-controls">
-                    <div class="arcade-button"></div>
-                    <div class="arcade-button"></div>
-                </div>
-            </div>
-        </div>
-        <div class="project-content">
-            <div class="project-category">Game Development</div>
-            <h3 class="project-title">Game Demo</h3>
-            <p class="project-description">
-                A fast-paced space shooter featuring polished game mechanics, multiple ship types, 
-                and dynamic enemy waves. Experience classic arcade gameplay with modern design. 
-                Download and play the full game from the repository.
-            </p>
-            <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">Pygame</span>
-                <span class="tag">Game Design</span>
-            </div>
-            <div class="project-links">
-                <a href="#" class="project-link primary">Download Game</a>
-                <a href="#" class="project-link">GitHub</a>
-            </div>
-        </div>
-    </div>
 
-</div>
+                <!-- AI Demo WIP -->
+                <div class="project-card ai-theme">
+                    <div class="project-visual">
+                        <div class="ai-visualization">
+                            <div class="icon">🤖</div>
+                            <div class="wip-badge">Work in Progress</div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">AI Integration</div>
+                        <h3 class="project-title">AI-Powered Demo</h3>
+                        <p class="project-description">
+                            An intelligent application showcasing modern AI capabilities. Currently in development, 
+                            this project explores the integration of machine learning models with practical user interfaces.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">API Integration</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Demo -->
+                <div class="project-card arcade-theme">
+                    <div class="project-visual">
+                        <div class="arcade-cabinet">
+                            <div class="arcade-screen">
+                                <span style="position: relative; z-index: 1;">🚀</span>
+                            </div>
+                            <div class="arcade-controls">
+                                <div class="arcade-button"></div>
+                                <div class="arcade-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Game Development</div>
+                        <h3 class="project-title">Game Demo</h3>
+                        <p class="project-description">
+                            A fast-paced space shooter featuring polished game mechanics, multiple ship types, 
+                            and dynamic enemy waves. Experience classic arcade gameplay with modern design. 
+                            Download and play the full game from the repository.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pygame</span>
+                            <span class="tag">Game Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">Download Game</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Let's Build Something</h2>
+                <p>Ideas, opportunities, or collaborations — send a message.</p>
+
+                <form class="contact-form" action="https://formsubmit.co/balaachaziz@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Portfolio Message!">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://balaachaziz.github.io/thanks.html">
+
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="message" placeholder="Your message..." required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <h3>Let's Connect</h3>
+                <h3>Balaach Aziz</h3>
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank" class="social-link">GitHub</a>
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link">LinkedIn</a>
-                    <a href="mailto:your.email@example.com" class="social-link">Email</a>
+                    <a href="https://github.com/balaachaziz" target="_blank" class="social-link">GitHub</a>
+                    <a href="https://linkedin.com/in/balaachaziz" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="mailto:balaachaziz@gmail.com" class="social-link">Email</a>
                 </div>
-                <p>© 2025 Balaach Aziz. Building the future, one project at a time.</p>
+                <p>© 2025 Balaach Aziz. All rights reserved.</p>
             </div>
         </div>
     </footer>
