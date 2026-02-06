@@ -450,6 +450,107 @@
             font-weight: 600;
         }
 
+        /* Plinko Game Theme */
+        .plinko-theme .project-visual {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plinko-theme .project-visual::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 40px
+            );
+        }
+
+        .plinko-board {
+            position: relative;
+            width: 280px;
+            height: 350px;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            border: 6px solid #1a252f;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .plinko-ball {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.6));
+            animation: ballBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes ballBounce {
+            0%, 100% { top: 5%; }
+            25% { top: 25%; left: 40%; }
+            50% { top: 45%; left: 60%; }
+            75% { top: 65%; left: 45%; }
+        }
+
+        .plinko-pegs {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .peg {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .plinko-slots {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px;
+            background: linear-gradient(180deg, #1a252f, #0f1419);
+            border-radius: 0 0 14px 14px;
+        }
+
+        .slot {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            margin: 0 2px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 6px rgba(243, 156, 18, 0.4);
+        }
+
+        .slot:nth-child(3) {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.4);
+        }
+
         /* Game Demo - Arcade Theme */
         .arcade-theme .project-visual {
             background: linear-gradient(135deg, #2d1b4e 0%, #1a0b2e 100%);
@@ -786,8 +887,8 @@
             <h1>Balaach Aziz</h1>
             <p class="subtitle">Software Developer</p>
             <p class="description">
-                I design and build intelligent software — from AI-powered tools to interactive applications.
-                Focused on creating products that feel fast, modern, and meaningful.
+                I am a self-taught developer building and designing applications that range from productivity apps, games, and Ai powered tools.
+                I am focused on creating products that feel fast, modern, and meaningful.
             </p>
 
             <div class="cta-buttons">
@@ -887,24 +988,34 @@
                     </div>
                 </div>
 
-                <!-- Text Analyzer -->
+                <!-- Text Summarizer -->
                 <div class="project-card">
-                    <div class="project-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
-                        <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);"></div>
+                    <div class="project-visual" style="background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; width: 100%; height: 100%; background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255, 255, 255, 0.03) 40px, rgba(255, 255, 255, 0.03) 80px);"></div>
                         <div style="text-align: center; position: relative; z-index: 1;">
-                            <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));">🤖</div>
-                            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; max-width: 280px;">
-                                <div style="color: white; font-size: 0.85rem; margin-bottom: 10px; opacity: 0.9;">TF-IDF Algorithm</div>
-                                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Multi-factor</div>
-                                    <div style="background: rgba(255, 255, 255, 0.2); padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; color: white;">Extractive</div>
+                            <div style="font-size: 6rem; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));">📖</div>
+                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 25px; max-width: 300px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+                                <div style="color: #2c3e50; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600;">Algorithm Processing</div>
+                                <div style="border-top: 2px solid #4a90e2; padding-top: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                        <div style="width: 30px; height: 4px; background: linear-gradient(90deg, #4a90e2, #357abd); border-radius: 2px;"></div>
+                                        <div style="font-size: 0.75rem; color: #555;">TF-IDF Scoring</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                        <div style="width: 50px; height: 4px; background: linear-gradient(90deg, #4a90e2, #357abd); border-radius: 2px;"></div>
+                                        <div style="font-size: 0.75rem; color: #555;">Sentence Ranking</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div style="width: 40px; height: 4px; background: linear-gradient(90deg, #4a90e2, #357abd); border-radius: 2px;"></div>
+                                        <div style="font-size: 0.75rem; color: #555;">Extract Summary</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
                         <div class="project-category">NLP Tool</div>
-                        <h3 class="project-title">AI Text Analyzer</h3>
+                        <h3 class="project-title">📖 Text Summarizer</h3>
                         <p class="project-description">
                             Advanced text analysis tool featuring custom TF-IDF extractive summarization algorithm. 
                             Provides readability metrics, vocabulary analysis, and intelligent sentence scoring using 
@@ -923,28 +1034,48 @@
                     </div>
                 </div>
 
-                <!-- AI Demo WIP -->
-                <div class="project-card ai-theme">
+                <!-- Plinko Game -->
+                <div class="project-card plinko-theme">
                     <div class="project-visual">
-                        <div class="ai-visualization">
-                            <div class="icon">🤖</div>
-                            <div class="wip-badge">Work in Progress</div>
+                        <div class="plinko-board">
+                            <div class="plinko-ball">🔴</div>
+                            <div class="plinko-pegs">
+                                <div class="peg" style="left: 50%; top: 15%;"></div>
+                                <div class="peg" style="left: 35%; top: 30%;"></div>
+                                <div class="peg" style="left: 65%; top: 30%;"></div>
+                                <div class="peg" style="left: 25%; top: 45%;"></div>
+                                <div class="peg" style="left: 50%; top: 45%;"></div>
+                                <div class="peg" style="left: 75%; top: 45%;"></div>
+                                <div class="peg" style="left: 35%; top: 60%;"></div>
+                                <div class="peg" style="left: 65%; top: 60%;"></div>
+                                <div class="peg" style="left: 50%; top: 75%;"></div>
+                            </div>
+                            <div class="plinko-slots">
+                                <div class="slot">2x</div>
+                                <div class="slot">5x</div>
+                                <div class="slot">10x</div>
+                                <div class="slot">5x</div>
+                                <div class="slot">2x</div>
+                            </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <div class="project-category">AI Integration</div>
-                        <h3 class="project-title">AI-Powered Demo</h3>
+                        <div class="project-category">Interactive Game</div>
+                        <h3 class="project-title">Plinko Game</h3>
                         <p class="project-description">
-                            An intelligent application showcasing modern AI capabilities. Currently in development, 
-                            this project explores the integration of machine learning models with practical user interfaces.
+                            A fun, browser-based Plinko game with realistic physics simulation. Drop the ball and watch 
+                            it bounce through pegs to land in multiplier slots. Built with vanilla JavaScript and HTML5 
+                            Canvas for smooth animations and engaging gameplay.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">AI/ML</span>
-                            <span class="tag">API Integration</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML5 Canvas</span>
+                            <span class="tag">Physics Simulation</span>
+                            <span class="tag">Game Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                            <a href="https://balaachaziz.github.io/Plinko/" target="_blank" class="project-link primary">Play Game</a>
+                            <a href="https://github.com/BalaachAziz/Plinko" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1015,12 +1146,6 @@
                 <h3>Balaach Aziz</h3>
                 <div class="social-links">
                     <a href="https://github.com/balaachaziz" target="_blank" class="social-link">GitHub</a>
-                    <a href="https://linkedin.com/in/balaachaziz" target="_blank" class="social-link">LinkedIn</a>
-                    <a href="mailto:balaachaziz@gmail.com" class="social-link">Email</a>
                 </div>
                 <p>© 2025 Balaach Aziz. All rights reserved.</p>
             </div>
-        </div>
-    </footer>
-</body>
-</html>
